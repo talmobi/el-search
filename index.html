@@ -11,15 +11,22 @@
       <ul id='el-results'>
       </ul>
     </div>
+
+    <div id='el-page' style='display: none;'>
+      <h3>Title</h3>
+      <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Etiam a lacinia sem. Fusce quam elit, scelerisque ut ligula sit amet, posuere egestas lacus. Sed lacinia eros ac diam rutrum aliquet. Fusce mollis leo vitae eros hendrerit sodales. Fusce rhoncus elit quis magna fringilla, in convallis neque iaculis. Morbi nec dictum ipsum, at posuere nisl. Nullam ac nibh sit amet diam vulputate rutrum. Maecenas sagittis odio massa, non consectetur nunc commodo in. Donec feugiat urna at eleifend consequat. Integer vitae imperdiet est, in venenatis tellus. Mauris feugiat nulla arcu, a pharetra enim imperdiet sed.</p>
+    </div>
+
     <script type="text/javascript">
       var names = "Kala Alpha Lelah Dorsey Marylin Jared Chloe Angeles Janel Tayna Roslyn Erika Vicky Maxima Marilou Oma Nicolle Earlean Latrisha Tamara Kathleen Omer Lissette Hildegarde Jerrod Simona Porter Jamie Nohemi Vince Luz Elmer Leilani Winston Regenia Osvaldo Alan Billie Arlena Kortney Corinne Reta Marlyn Logan Audra Brant Thomasine Fausto Oren Tarah Jordon Luke Shelby Norris Dia Wesley Jerrod Gaylord Risa Alina Wendolyn Dierdre Zita Rosy Concepcion Deeann Lucile Debby Diedre Verena Cody Monte Nancie Curt Lonny Daphine Ramona Raymon Katy Florene Corinna Jeanine Adolph Ingeborg Shaniqua Dara Lavinia Lenita Charlene Timika Candance Miles Meghann Deloras Cheryl Crista Elise Tanisha Susann Chelsie".split(" ");
 
-      console.log(names);
+      //console.log(names);
 
       var _t = $;
       var $ = jQuery;
+      var results = [];
       $('#el-search').keyup(function() {
-        var results = [];
+        results = [];
         var input = $('#el-search').val().toLowerCase();
         if (input.length < 1) {
           $('#el-results').empty();
@@ -36,6 +43,23 @@
         $('#el-results').empty();
         for (var i = 0; i < results.length; i++) {
           $('#el-results').append("<li>"+results[i]+"</li>");
+        }
+      });
+
+      $('#el-search').keydown(function(e) {
+        // check for enter key
+        if (e.which == 13) {
+          console.log("Enter Key");
+          var div = $('#el-page');
+          var title = results[0];
+          if (title.length > 0) {
+            $('#el-page h3').html(title);
+            window.location.hash = title;
+            div.css('display', 'block');
+          } else {
+            $('#el-page h3').html('');
+            div.css('display', 'none');
+          }
         }
       });
 
