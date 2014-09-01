@@ -1,7 +1,7 @@
 <html>
 <head>
   <title></title>
-  <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -12,14 +12,34 @@
       </ul>
     </div>
     <script type="text/javascript">
-      var names = "Kala Alpha Lelah Dorsey Marylin Jared Chloe Angeles Janel Tayna Roslyn Erika Vicky Maxima Marilou Oma Nicolle Earlean Latrisha Tamara Kathleen Omer Lissette Hildegarde Jerrod Simona Porter Jamie Nohemi Vince Luz Elmer Leilani Winston Regenia Osvaldo Alan Billie Arlena Kortney Corinne Reta Marlyn Logan Audra Brant Thomasine Fausto Oren Tarah".split(" ");
+      var names = "Kala Alpha Lelah Dorsey Marylin Jared Chloe Angeles Janel Tayna Roslyn Erika Vicky Maxima Marilou Oma Nicolle Earlean Latrisha Tamara Kathleen Omer Lissette Hildegarde Jerrod Simona Porter Jamie Nohemi Vince Luz Elmer Leilani Winston Regenia Osvaldo Alan Billie Arlena Kortney Corinne Reta Marlyn Logan Audra Brant Thomasine Fausto Oren Tarah Jordon Luke Shelby Norris Dia Wesley Jerrod Gaylord Risa Alina Wendolyn Dierdre Zita Rosy Concepcion Deeann Lucile Debby Diedre Verena Cody Monte Nancie Curt Lonny Daphine Ramona Raymon Katy Florene Corinna Jeanine Adolph Ingeborg Shaniqua Dara Lavinia Lenita Charlene Timika Candance Miles Meghann Deloras Cheryl Crista Elise Tanisha Susann Chelsie".split(" ");
 
       console.log(names);
 
+      var _t = $;
+      var $ = jQuery;
       $('#el-search').keyup(function() {
-        console.log("key up");
+        var results = [];
+        var input = $('#el-search').val().toLowerCase();
+        if (input.length < 1) {
+          $('#el-results').empty();
+          return;
+        }
+
+        for (var i = 0; i < names.length; i++) {
+          var n = names[i];
+          if (n.substring(0, input.length).toLowerCase() === input) {
+            results.push(n);
+          }
+        }
+
+        $('#el-results').empty();
+        for (var i = 0; i < results.length; i++) {
+          $('#el-results').append("<li>"+results[i]+"</li>");
+        }
       });
 
+      $ = _t;
     </script>
   </div>
 
