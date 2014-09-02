@@ -30,6 +30,7 @@
         var input = $('#el-search').val().toLowerCase();
         if (input.length < 1) {
           $('#el-results').empty();
+          $('#el-page').css('display', 'none');
           return;
         }
 
