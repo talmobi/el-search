@@ -25,7 +25,7 @@
       var _t = $;
       var $ = jQuery;
       var results = [];
-      $('#el-search').keyup(function() {
+      $('#el-search').keyup(function(e) {
         results = [];
         var input = $('#el-search').val().toLowerCase();
         if (input.length < 1) {
@@ -45,13 +45,15 @@
         for (var i = 0; i < results.length; i++) {
           $('#el-results').append("<li>"+results[i]+"</li>");
         }
+
+        search(e);
       });
 
-      $('#el-search').keydown(function(e) {
+      function search(e) {
         // check for enter key
         //if (e.which == 13) {
         if (results[0] || e.which == 13) {
-          console.log("Enter Key");
+          //console.log("Enter Key");
           var div = $('#el-page');
           var title = results[0];
           if (title.length > 0) {
@@ -63,7 +65,7 @@
             div.css('display', 'none');
           }
         }
-      });
+      };
 
       $ = _t;
     </script>
